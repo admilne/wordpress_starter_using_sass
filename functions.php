@@ -366,4 +366,4 @@
 
 		return $lat_and_long;
 	}
-?>
+

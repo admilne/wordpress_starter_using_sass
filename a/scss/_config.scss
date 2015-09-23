@@ -1,16 +1,32 @@
 // Colours
 
+$dark-grey				: #404041;
+$very-dark-grey			: #383c41;
+$grey					: #808081;
+$mine-shaft-grey		: #3a3a3a;
 $white					: #ffffff;
 $black					: #231f20;
+$blue					: #698bab;
+$pale-blue				: #e0e5ec;
+$light-blue				: #6190b7;
 
 // Font Colour Usage
 
-$primary-color			: red;
-$secondary-color		: blue;
+$font-color-1			: red;
+$font-color-2			: blue;
+$font-color-3			: $grey;
+$font-color-4			: $blue;
 
 // Background Colour Usage
 
-$primary-bg-color		: $white;
+$bg-color-1				: green;
+$bg-color-2				: $dark-grey;
+$bg-color-3				: $light-blue;
+
+// Other Colours
+
+$divider-color			: $pale-blue;
+$button-color			: $mine-shaft-grey;
 
 // Font Stacks
 
@@ -18,4 +34,4 @@ $primary-font			: 'Arial', sans-serif;
 
 // Footer Height - this is required if you want to use the sticky footer
 
-$footer-height			: 80px;
+$footer-height			: 174px;
