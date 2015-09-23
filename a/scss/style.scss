@@ -1,0 +1,7 @@
+@import 'tools'; // Creates any mixins or functions
+@import 'config'; // Sets up any required variables or optional flags
+@import 'base'; // Includes normalisation and sets styles on base elements: html, body, a, ul, li, etc.
+@import 'layout'; // Grids, responsive frameworks, wrappers etc
+@import 'modules'; // Most code lives here. File will contain list of modules defined (and documented) one after another
+@import 'other'; // Any code that doesn't fit in any of the other files. Code that couldn't be made modular
+@import 'shame'; // All code you aren't proud of goes here with the intention of isolating it / fixing it later. File should be empty but sometimes you just have to throw a hack in there to get it working

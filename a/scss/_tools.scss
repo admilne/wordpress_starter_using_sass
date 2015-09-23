@@ -1,0 +1,35 @@
+// This function automatically converts pixels to ems
+@function em($pixels, $context: 16) {
+	@return #{$pixels/$context}em;
+}
+
+// Sets the font size using rem but provides a fixed px fallback for older browsers
+@mixin font-size($sizeValue: 12 ){
+	font-size: $sizeValue + px; //fallback for old browsers
+	font-size: (0.10 * $sizeValue) + rem;
+}
+
+@mixin box-sizing($box-model: border-box) {
+	/* Box sizing - only works in IE8+ - http://caniuse.com/#feat=css3-boxsizing */
+	-webkit-box-sizing: $box-model; // Safari <= 5
+	-moz-box-sizing: $box-model; // Firefox <= 19
+	box-sizing: $box-model;
+}
+
+@mixin border-radius($radius: 5px) {
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+	background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin text-truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

@@ -1,0 +1,18 @@
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+.page-wrapper {
+	min-height:100%;
+	position:relative;
+	padding-bottom:$footer-height;   /* Height of the footer element */
+}
+.footer {
+	width:100%;
+	height:$footer-height;
+	position:absolute;
+	bottom:0;
+	left:0;
+}

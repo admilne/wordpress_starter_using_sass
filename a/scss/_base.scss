@@ -1,0 +1,133 @@
+/* Normalise
+------------------------------------------------------------------------------------ */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+body {line-height:1.2;}
+h1,h2,h3,h4,h5,h6 {line-height: 1;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+table, td, th {vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+img {max-width:100%; height: auto;}
+
+html {
+	font-size: 62.5%; // Used for sizing with REM - See http://snook.ca/archives/html_and_css/font-size-with-rem
+	@include box-sizing();
+}
+*, *:before, *:after {
+	@include box-sizing();
+}
+
+/* Base Styles
+------------------------------------------------------------------------------------ */
+
+body {
+	color: $primary-color;
+	font-family: $primary-font;
+}
+
+h1 {
+	@include font-size(36);
+}
+
+h2 {
+	@include font-size(30);
+}
+
+h3 {
+	@include font-size(24);
+}
+
+p {
+	@include font-size(12);
+	margin-bottom: 1em;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+ul {
+	margin-left: 36px;
+	margin-bottom: 1em;
+}
+
+ol {
+	margin-left: 36px;
+	margin-bottom: 1em;
+}
+
+a {
+	color: $primary-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+/* Wordpress Defaults
+------------------------------------------------------------------------------------ */
+	.alignleft {
+		float: left;
+	}
+
+	.alignright {
+		float: right;
+	}
+
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	img.alignleft {
+		margin: 5px 20px 5px 0;
+	}
+
+	.wp-caption.alignleft {
+		margin: 5px 10px 5px 0;
+	}
+
+	img.alignright {
+		margin: 5px 0 5px 20px;
+	}
+
+	.wp-caption.alignright {
+		margin: 5px 0 5px 10px;
+	}
+
+	img.aligncenter {
+		margin: 5px auto;
+	}
+
+	img.alignnone {
+		margin: 5px 0;
+	}
+
+	.wp-caption .wp-caption-text,
+	.entry-caption,
+	.gallery-caption {
+		color: #220e10;
+		font-size: 18px;
+		font-style: italic;
+		font-weight: 300;
+	}
+
+	img.wp-smiley,
+	.rsswidget img {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		margin-bottom: 0;
+		margin-top: 0;
+		padding: 0;
+	}
+
+	.wp-caption.alignleft + ul,
+	.wp-caption.alignleft + ol  {
+		list-style-position: inside;
+	}
