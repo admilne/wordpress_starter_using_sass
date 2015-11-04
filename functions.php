@@ -54,6 +54,8 @@
 		// 	wp_enqueue_script( ' individualPageStyle' );
 		// }
 		wp_enqueue_script( 'theme_js', get_template_directory_uri() . '/a/js/theme.js', array('jquery'), '', true );
+		// Twitter fetcher can be downloaded from https://github.com/jasonmayes/Twitter-Post-Fetcher
+		// wp_enqueue_script( 'twitter_fetcher_js', get_template_directory_uri() . '/a/js/twitterFetcher_min.js', array('jquery'), '', true );
 	}
 	// This function is used to tell the wp_enqueue_scripts hook to load our theme javascript files
 	add_action( 'wp_enqueue_scripts', 'theme_js' );
@@ -86,23 +88,20 @@
 /* Create Custom Post Types
 ------------------------------------------------------------------------------------ */
 /*
-	// Register CTAs post type. More information can be found here - http://codex.wordpress.org/Function_Reference/register_post_type
-	function create_cta_post_type() {
+	function generate_post_type_args ( $single = "CTA", $multiple = "CTAs", $slug = 'CTA', $supports = array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments') ) {
 		$labels = array(
-			'name'               => __( 'CTAs' ), // general name for the post type, usually plural.
-			'singular_name'      => __( 'CTA' ), // name for one object of this post type. Defaults to value of 'name'.
-			'menu_name'          => __( 'CTAs' ), // the menu name text. This string is the name to give menu items. Defaults to value of 'name'.
-			'name_admin_bar'     => __( 'CTA' ), // name given for the "Add New" dropdown on admin bar. Defaults to 'singular_name' if it exists, 'name' otherwise.
-			'add_new'            => __( 'Add New', 'CTA' ), //  the add new text.
-			'add_new_item'       => __( 'Add New CTA' ), // the add new item text. Default is Add New Post/Add New Page
-			'new_item'           => __( 'New CTA' ), // the new item text. Default is "New Post" for non-hierarchical and "New Page" for hierarchical post types.
-			'edit_item'          => __( 'Edit CTA' ), // the edit item text. In the UI, this label is used as the main header on the post's editing panel. Default is "Edit Post" for non-hierarchical and "Edit Page" for hierarchical post types.
-			'view_item'          => __( 'View CTA' ), // the view item text. Default is View Post/View Page
-			'all_items'          => __( 'All CTAs' ), // the all items text used in the menu. Default is the value of 'name'.
-			'search_items'       => __( 'Search CTAs' ), // the search items text. Default is Search Posts/Search Pages
-			'parent_item_colon'  => __( 'Parent CTA:' ), // the parent text. This string is used only in hierarchical post types. Default is "Parent Page".
-			'not_found'          => __( 'No CTAs found.' ), // the not found text. Default is No posts found/No pages found
-			'not_found_in_trash' => __( 'No CTAs found in Trash.' ) // the not found in trash text. Default is No posts found in Trash/No pages found in Trash.
+			'name'               => __( $multiple ), // general name for the post type, usually plural.
+			'singular_name'      => __( $single ), // name for one object of this post type. Defaults to value of 'name'.
+			'add_new'            => 'Add New ' . $single, //  the add new text.
+			'add_new_item'       => 'Add New ' . $single, // the add new item text. Default is Add New Post/Add New Page
+			'new_item'           => 'New ' . $single, // the new item text. Default is "New Post" for non-hierarchical and "New Page" for hierarchical post types.
+			'edit_item'          => 'Edit ' . $single, // the edit item text. In the UI, this label is used as the main header on the post's editing panel. Default is "Edit Post" for non-hierarchical and "Edit Page" for hierarchical post types.
+			'view_item'          => 'View ' . $single, // the view item text. Default is View Post/View Page
+			'all_items'          => 'All ' . $multiple, // the all items text used in the menu. Default is the value of 'name'.
+			'search_items'       => 'Search ' . $multiple, // the search items text. Default is Search Posts/Search Pages
+			'parent_item_colon'  => 'Parent ' . $single . ':', // the parent text. This string is used only in hierarchical post types. Default is "Parent Page".
+			'not_found'          => 'No ' . $multiple . ' found.', // the not found text. Default is No posts found/No pages found
+			'not_found_in_trash' => 'No ' . $multiple . ' found in Trash.' // the not found in trash text. Default is No posts found in Trash/No pages found in Trash.
 		);
 
 		$args = array(
@@ -112,18 +111,32 @@
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'book' ),
+			'rewrite'            => array( 'slug' => $slug ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'supports'           => $supports
 		);
 
-		register_post_type( 'cta', $args );
+		return $args;
 	}
 
-	add_action( 'init', 'create_cta_post_type' );
+	function create_post_types() {
+		register_post_type(
+			'office', // Name of the post type
+			generate_post_type_args('Office', 'Offices', 'office', ['title']) // Singular name, multiple name, array of fields supported
+		);
+
+		register_post_type(
+			'casestudy', // Name of the post type
+			generate_post_type_args('Case Study', 'Case Studies', 'casestudy', ['title']) // Singular name, multiple name, array of fields supported
+		);
+
+		flush_rewrite_rules();
+	}
+
+	add_action( 'init', 'create_post_types');
 */
 
 
