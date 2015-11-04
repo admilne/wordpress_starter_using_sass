@@ -1,9 +1,13 @@
 <?php
 
+/* ADD ABILITY TO USE COOKIES TO USE COOKIE MESSAGE */
+
+	session_start();
+
 /* THEME CONSTANTS */
 
 	define('THEME_IMAGES', get_template_directory_uri() . "/a/img/");
-	
+
 /* ENABLE CUSTOM MENUS
 ------------------------------------------------------------------------------------ */
 
@@ -15,7 +19,7 @@
 
 	function theme_styles() {
 		// Format should be wp_enqueue_style( '{{ handle-name }}', '{{ path/to/css/file.css }}'  );
-		
+
 			wp_enqueue_style( 'template', get_template_directory_uri() . '/style.css' );
 			wp_enqueue_style( 'styles', get_template_directory_uri() . '/a/css/style.css' );
 			// wp_enqueue_style( 'googlefonts','http://fonts.googleapis.com?famil=font+name');
@@ -43,7 +47,7 @@
 ------------------------------------------------------------------------------------ */
 
 	function theme_js() {
-		// This function registers a javascript file with the path name given, informs it that it relies on jquery to work , we aren't 
+		// This function registers a javascript file with the path name given, informs it that it relies on jquery to work , we aren't
 		// concerned with a version and that we want the javascript to appear at the bottom of the page.
 		// wp_register_script( 'individual_JS_File',  get_template_directory_uri() . '/a/js/individual_JS_File.js', array('jquery'), '', true);
 		// if ( is_page( 'individualPage') ) {
@@ -68,12 +72,12 @@
 			'before_title' => $before_title, // this allows you to add html content before the widget title
 			'after_title' => $after_title, // this allows you to add html content before the widget title
 		);
-		
+
 		// This bit of code will then use your arguments to register your widget. Its called a sidebar
 		// in WordPress because of its history with blogs
 		register_sidebar( $args );
 	}
-	
+
 	// This can now be called as many times as you like to create as many widgets as you need
 	// PLEASE NOTE THE ID MUST BE IN LOWECASE
 	create_widget( 'Widget Name', 'lowercase_id', 'Widget Description');
@@ -121,7 +125,7 @@
 
 	add_action( 'init', 'create_cta_post_type' );
 */
-	
+
 
 /* ENABLE SUPPORT FOR THUMBNAILS
 ------------------------------------------------------------------------------------ */
@@ -152,29 +156,29 @@
 	add_filter('mce_buttons_2', 'my_mce_buttons_2');
 
 	// Callback function to filter the MCE settings
-	function my_mce_before_init_insert_formats( $init_array ) {  
+	function my_mce_before_init_insert_formats( $init_array ) {
 		// Define the style_formats array
-		$style_formats = array(  
+		$style_formats = array(
 			// Each array child is a format with it's own settings
-			array(  
-				'title' => 'Price',  
-				'block' => 'h2',  
+			array(
+				'title' => 'Price',
+				'block' => 'h2',
 				'classes' => 'price',
 				'wrapper' => false,
 			),
-			array(  
-				'title' => 'Green Text',  
+			array(
+				'title' => 'Green Text',
 				'inline' => 'span',
 				'classes' => 'green',
 			),
-		);  
+		);
 		// Insert the array, JSON ENCODED, into 'style_formats'
-		$init_array['style_formats'] = json_encode( $style_formats );  
-		
-		return $init_array;  
-	  
-	} 
-	// Attach callback to 'tiny_mce_before_init' 
+		$init_array['style_formats'] = json_encode( $style_formats );
+
+		return $init_array;
+
+	}
+	// Attach callback to 'tiny_mce_before_init'
 	add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
 */
 
@@ -263,7 +267,7 @@
 			'child_of' => $page_id,
 			'post_type' => 'page',
 			'post_status' => 'publish'
-		); 
+		);
 		return get_pages($args);
 	}
 
@@ -272,7 +276,7 @@
 	{
 		if(empty($_SESSION['cookie_message_shown'])) {
 			$_SESSION['cookie_message_shown'] = 1;
-			echo('<div class="cookie-message" id="cookie-message">This site uses cookies, your continued use implies you agree with our cookie policy. <a href="#" id="dismiss">Dismiss</a></div>');
+			echo('<div class="cookie-message" id="cookie-message">This site uses cookies, your continued use implies you agree with our <a class="cookie-policy-link" href="/cookie-policy">cookie policy</a>. <a href="#" id="dismiss">Dismiss</a></div>');
 		}
 	}
 
@@ -303,16 +307,21 @@
 
 	// Get meta information about an image when provided with the id
 	function wp_get_attachment( $attachment_id ) {
-
-		$attachment = get_post( $attachment_id );
-		return array(
-			'alt' => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
-			'caption' => $attachment->post_excerpt,
-			'description' => $attachment->post_content,
-			'href' => get_permalink( $attachment->ID ),
-			'src' => $attachment->guid,
-			'title' => $attachment->post_title
-		);
+		if( $attachment_id ) {
+			$attachment = get_post( $attachment_id );
+			$thumbnail = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' );
+			return array(
+				'alt' => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
+				'caption' => $attachment->post_excerpt,
+				'description' => $attachment->post_content,
+				'href' => get_permalink( $attachment->ID ),
+				'src' => $attachment->guid,
+				'title' => $attachment->post_title,
+				'thumbnail_src' => $thumbnail[0]
+			);
+		} else {
+			return false;
+		}
 	}
 
 	function get_latest_blog_posts($number_of_posts = 1) {
@@ -366,4 +375,3 @@
 
 		return $lat_and_long;
 	}
-

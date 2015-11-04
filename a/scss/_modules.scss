@@ -14,3 +14,19 @@
 		display: block; /* Turn on for mobile view */
 	}
 }
+
+.cookie-message {
+	color: #ffffff;
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.85);
+	bottom: 0;
+	z-index: 100;
+	padding: 1em 2%;
+
+	.cookie-policy-link {
+		color: #ffffff;
+	}
+}
