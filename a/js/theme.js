@@ -27,6 +27,21 @@ jQuery(function() {
 		}
 	});
 
+	// Back button, takes you to previous page
+	jQuery('.back-button').click(function(e) {
+		e.preventDefault();
+		window.history.back();
+	});
+
+	// Cookie message
+	var dismiss			= jQuery('#dismiss');
+	var cookieMsg		= jQuery('#cookie-message');
+
+	jQuery(dismiss).on('click', function(e) {
+		e.preventDefault();
+		cookieMsg.fadeOut();
+	});
+
 });
 
 
