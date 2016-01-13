@@ -1,37 +1,52 @@
 // Colours
 
-$dark-grey				: #404041;
-$very-dark-grey			: #383c41;
-$grey					: #808081;
-$mine-shaft-grey		: #3a3a3a;
-$white					: #ffffff;
-$black					: #231f20;
-$blue					: #698bab;
-$pale-blue				: #e0e5ec;
-$light-blue				: #6190b7;
+$white						: #ffffff;
+$black						: #231f20;
+$tundora					: #454545;
+$gallery					: #EBEBEB;
+$mocha						: #742c17;
+$dark-grey					: #474444;
+$light-grey					: #82827f;
 
-// Font Colour Usage
 
-$font-color-1			: red;
-$font-color-2			: blue;
-$font-color-3			: $grey;
-$font-color-4			: $blue;
+// Colour Usage
 
-// Background Colour Usage
+$colour__page__bg			: $gallery;
+$colour__content__bg		: $white;
 
-$bg-color-1				: green;
-$bg-color-2				: $dark-grey;
-$bg-color-3				: $light-blue;
+$colour__title				: $tundora;
 
-// Other Colours
+$colour__text				: $tundora;
+$colour__text__alt			: $white;
 
-$divider-color			: $pale-blue;
-$button-color			: $mine-shaft-grey;
+$colour__nav__text			: $white;
+
+$colour__btn__bg			: $mocha;
+$colour__btn__bg-hover		: $tundora;
+$colour__btn__text			: $white;
+
+$colour__link				: $mocha;
+
 
 // Font Stacks
 
-$primary-font			: 'Arial', sans-serif;
+$font__family__text			: 'Lato', sans-serif;
+$font__family__title		: 'Palatino', serif;
+
+
+// Font Weights
+
+$font__weight__light		: 300;
+$font__weight__normal		: 400;
+$font__weight__bold			: 700;
+
+
+// Breakpoints
+
+$breakpoint-tablet			: 900px;
+$breakpoint-phone			: 720px;
+$breakpoint-small-phone		: 490px;
 
 // Footer Height - this is required if you want to use the sticky footer
 
-$footer-height			: 174px;
+$footer-height				: 174px;
