@@ -60,12 +60,8 @@
 			}
 
 			a {
-				color: $font-color-1;
+				color: $colour__link;
 				@media screen and (max-width: 890px) {
-					background-color: $bg-color-1;
-					border-bottom: 1px solid darken($font-color-1, 5%);
-					border-top: 1px solid lighten($font-color-1, 5%);
-					color: $white;
 					display: block;
 					padding: 0.5em 10px;
 					text-align: center;
@@ -74,7 +70,7 @@
 
 			a:hover,
 			&.current_page_item a {
-				color: $font-color-2;
+				color: $colour__link;
 				text-decoration: none;
 			}
 		}

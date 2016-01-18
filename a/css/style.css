@@ -1,3 +1,15 @@
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden; }
+  .video-container iframe, .video-container object, .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
 /* Normalise
 ------------------------------------------------------------------------------------ */
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -56,8 +68,8 @@ html {
 /* Base Styles
 ------------------------------------------------------------------------------------ */
 body {
-  color: red;
-  font-family: "Arial", sans-serif; }
+  color: #454545;
+  font-family: "Lato", sans-serif; }
 
 h1 {
   font-size: 36px;
@@ -87,7 +99,7 @@ ol {
   margin-bottom: 1em; }
 
 a {
-  color: red;
+  color: #742c17;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -182,6 +194,19 @@ body {
       display: block;
       /* Turn on for mobile view */ } }
 
+.cookie-message {
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+  bottom: 0;
+  z-index: 100;
+  padding: 1em 2%; }
+  .cookie-message .cookie-policy-link {
+    color: #ffffff; }
+
 /* Other
 ------------------------------------------------------------------------------------ */
 /* Hall of shame
@@ -231,18 +256,14 @@ body {
         margin: 0;
         padding: 0; } }
     .main-menu li a {
-      color: red; }
+      color: #742c17; }
       @media screen and (max-width: 890px) {
         .main-menu li a {
-          background-color: green;
-          border-bottom: 1px solid #e60000;
-          border-top: 1px solid #ff1a1a;
-          color: #ffffff;
           display: block;
           padding: 0.5em 10px;
           text-align: center; } }
     .main-menu li a:hover, .main-menu li.current_page_item a {
-      color: blue;
+      color: #742c17;
       text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

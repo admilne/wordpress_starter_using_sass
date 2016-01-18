@@ -24,8 +24,8 @@ html {
 ------------------------------------------------------------------------------------ */
 
 body {
-	color: $font-color-1;
-	font-family: $primary-font;
+	color: $colour__text;
+	font-family: $font__family__text;
 }
 
 h1 {
@@ -60,7 +60,7 @@ ol {
 }
 
 a {
-	color: $font-color-1;
+	color: $colour__link;
 	text-decoration: none;
 
 	&:hover {
